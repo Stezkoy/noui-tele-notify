@@ -2,6 +2,8 @@
 
 namespace Stezkoy\NouiTeleNotify;
 
+use Flarum\Foundation\Config;
+
 class TelegramNotifier
 {
     private const API_BASE_URL = 'https://api.telegram.org/bot';
@@ -9,22 +11,28 @@ class TelegramNotifier
     private const HTTP_TIMEOUT = 10;
 
     public function __construct(
-        private readonly TelegramConfig $config,
+        private readonly Config $config,
     ) {}
 
     public function send(string $message): array
     {
-        $url = self::API_BASE_URL . $this->config->botToken . '/sendMessage';
+        $settings = $this->config->offsetGet('stezkoy-noui-tele-notify') ?? [];
+
+        $botToken = $settings['bot_token'] ?? '';
+        $chatId = $settings['chat_id'] ?? '';
+        $topicId = isset($settings['topic_id']) ? (int) $settings['topic_id'] : null;
+
+        $url = self::API_BASE_URL . $botToken . '/sendMessage';
 
         $data = [
-            'chat_id' => $this->config->chatId,
+            'chat_id' => $chatId,
             'text' => $message,
             'parse_mode' => 'HTML',
             'disable_web_page_preview' => false,
         ];
 
-        if ($this->config->topicId !== null) {
-            $data['message_thread_id'] = $this->config->topicId;
+        if ($topicId !== null) {
+            $data['message_thread_id'] = $topicId;
         }
 
         $jsonData = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
