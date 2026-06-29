@@ -1,17 +1,19 @@
 stezkoy-noui-tele-notify:
   forum:
     new_discussion: |
-      🆕 New discussion: «{title}»
+      🆕 <b>New discussion</b>
 
-      {tags}
-      Excerpt: <i>{excerpt}</i>
+      Topic: «{title}»
+      Author: {author}
+      Date: {date}
+      {excerpt}
       ➡️ <a href="{url}">Go to discussion</a>
 
     new_post: |
       💬 <b>New post</b>
 
       Topic: «{title}»
-      👤 Author: {author}
-      📅 Date: {date}
+      Author: {author}
+      Date: {date}
       {excerpt}
       ➡️ <a href="{url}">Go to post</a>
