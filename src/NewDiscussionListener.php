@@ -29,7 +29,17 @@ class NewDiscussionListener
 
         $content = '';
         if ($post !== null && !empty($post->content)) {
-            $content = strip_tags((string) $post->content);
+            if (is_array($post->content)) {
+                $pieces = [];
+                foreach ($post->content as $block) {
+                    if (is_array($block) && isset($block['text'])) {
+                        $pieces[] = $block['text'];
+                    }
+                }
+                $content = implode(' ', $pieces);
+            } else {
+                $content = strip_tags((string) $post->content);
+            }
         }
         $excerpt = mb_substr($content, 0, 200);
         if (mb_strlen($content) > 200) {
@@ -39,7 +49,7 @@ class NewDiscussionListener
         $tagsString = '';
         if (method_exists($discussion, 'tags')) {
             try {
-                $tags = $discussion->tags;
+                $tags = $discussion->tags()->get();
                 if ($tags !== null && $tags->isNotEmpty()) {
                     $tagNames = [];
                     foreach ($tags as $tag) {
