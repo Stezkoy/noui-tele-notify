@@ -28,17 +28,21 @@ class NewDiscussionListener
         $date = $createdAt ? $createdAt->format('d.m.Y H:i') : '—';
 
         $content = '';
-        if ($post !== null && !empty($post->content)) {
-            if (is_array($post->content)) {
+        $sourcePost = $post;
+        if ($sourcePost === null || empty($sourcePost->content)) {
+            $sourcePost = $discussion->firstPost;
+        }
+        if ($sourcePost !== null && !empty($sourcePost->content)) {
+            if (is_array($sourcePost->content)) {
                 $pieces = [];
-                foreach ($post->content as $block) {
+                foreach ($sourcePost->content as $block) {
                     if (is_array($block) && isset($block['text'])) {
                         $pieces[] = $block['text'];
                     }
                 }
                 $content = implode(' ', $pieces);
             } else {
-                $content = strip_tags((string) $post->content);
+                $content = strip_tags((string) $sourcePost->content);
             }
         }
         $excerpt = mb_substr($content, 0, 200);
@@ -47,19 +51,14 @@ class NewDiscussionListener
         }
 
         $tagsString = '';
-        if (method_exists($discussion, 'tags')) {
-            try {
-                $tags = $discussion->tags()->get();
-                if ($tags !== null && $tags->isNotEmpty()) {
-                    $tagNames = [];
-                    foreach ($tags as $tag) {
-                        $tagNames[] = '#' . $tag->name;
-                    }
-                    $tagsString = implode(' ', $tagNames);
-                }
-            } catch (\Throwable $e) {
-                // tags extension not available
+        try {
+            $tags = $discussion->tags;
+            if ($tags !== null && $tags->isNotEmpty()) {
+                $tagNames = $tags->pluck('name')->map(fn($name) => '#' . $name);
+                $tagsString = $tagNames->implode(' ');
             }
+        } catch (\Throwable $e) {
+            // tags extension not available
         }
 
         $discussionUrl = $this->url->to('forum')->route('discussion', ['id' => $discussion->id]);
