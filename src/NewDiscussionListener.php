@@ -21,12 +21,6 @@ class NewDiscussionListener
 
         $title = $discussion->title;
 
-        $user = $discussion->user;
-        $authorName = $user?->display_name ?? 'Unknown';
-
-        $createdAt = $discussion->created_at;
-        $date = $createdAt ? $createdAt->format('d.m.Y H:i') : '—';
-
         $content = '';
         if ($post !== null && !empty($post->content)) {
             $content = strip_tags((string) $post->content);
@@ -36,13 +30,19 @@ class NewDiscussionListener
             $excerpt .= '…';
         }
 
+        $tagsBlock = '';
+        $tags = $discussion->tags;
+        if ($tags !== null && !$tags->isEmpty()) {
+            $tagNames = $tags->pluck('name')->implode(', ');
+            $tagsBlock = '🏷️ ' . $this->escape($tagNames);
+        }
+
         $discussionUrl = $this->url->to('forum')->route('discussion', ['id' => $discussion->id]);
 
         $message = $this->translator->trans('stezkoy-noui-tele-notify.forum.new_discussion', [
             '{title}' => $this->escape($title),
-            '{author}' => $this->escape($authorName),
-            '{date}' => $date,
-            '{excerpt}' => '<i>' . $this->escape($excerpt) . '</i>',
+            '{excerpt}' => $this->escape($excerpt),
+            '{tags}' => $tagsBlock,
             '{url}' => $discussionUrl,
         ]);
 

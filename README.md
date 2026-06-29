@@ -1,89 +1,85 @@
 # NOUI Telegram Notify
 
-Расширение для Flarum v2, которое отправляет уведомления в Telegram о новых темах и сообщениях на форуме.
+A Flarum v2 extension that sends notifications about new discussions and new posts to a Telegram channel or group. All configuration is done via `config.php` — no admin panel needed.
 
-## Возможности
+## Features
 
-- Уведомление о новой теме — заголовок, автор, дата, excerpt (200 символов), ссылка
-- Уведомление о новом сообщении в существующей теме — заголовок темы, автор, дата, excerpt (200 символов), ссылка
-- Поддержка топиков Telegram Groups (опциональный `topic_id`)
-- Двуязычный интерфейс: русский и английский
-- Форматирование через HTML и emoji
+- Notification on new discussion — title, author, date, excerpt (200 chars), link
+- Notification on new post in an existing discussion — thread title, author, date, excerpt (200 chars), link
+- Support for Telegram Group topics (optional `topic_id`)
+- Bilingual interface: Russian and English
+- HTML formatting with emoji
 
-## Установка
+## Installation
 
-Установите расширение через Composer:
+Install the extension via Composer:
 
 ```bash
 composer require stezkoy/noui-tele-notify
 ```
 
-Затем выполните миграцию Flarum:
+Then run Flarum migrations:
 
 ```bash
 php flarum migrate
 php flarum cache:clear
 ```
 
-## Настройка
+## Configuration
 
-Расширение не использует панель администратора. Все параметры задаются в `config.php` вашего форума в секции `stezkoy-noui-tele-notify`:
+The extension has no admin panel settings. Configure it in your forum's `config.php` under the `stezkoy-noui-tele-notify` key:
 
-### Минимальная конфигурация
-
-```php
-<?php
-
-return [
-    // ... другие настройки Flarum
-
-    'stezkoy-noui-tele-notify' => [
-        'bot_token' => '1234567890:AAF1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9Kk0Ll',
-        'chat_id' => '-1001234567890',
-    ],
-];
-```
-
-### Полная конфигурация (с топиком Telegram Groups)
+### Minimal configuration
 
 ```php
-<?php
+<?php return array(
+    // ... other Flarum settings
 
-return [
-    // ... другие настройки Flarum
-
-    'stezkoy-noui-tele-notify' => [
+    'stezkoy-noui-tele-notify' => array(
         'bot_token' => '1234567890:AAF1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9Kk0Ll',
         'chat_id' => '-1001234567890',
-        'topic_id' => 123,  // ID топика в группе (опционально)
-    ],
-];
+    ),
+);
 ```
 
-### Параметры
+### Full configuration (with Telegram Group topic)
 
-| Параметр    | Тип    | Обязательный | Описание                                     |
-| ----------- | ------ | ------------ | -------------------------------------------- |
-| `bot_token` | string | да           | Токен Telegram-бота, полученный от BotFather |
-| `chat_id`   | string | да           | ID чата или группы для отправки сообщений    |
-| `topic_id`  | int    | нет          | ID топика в Telegram Groups                  |
+```php
+<?php return array(
+    // ... other Flarum settings
 
-## Как получить chat_id
+    'stezkoy-noui-tele-notify' => array(
+        'bot_token' => '1234567890:AAF1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9Kk0Ll',
+        'chat_id' => '-1001234567890',
+        'topic_id' => 123,  // Group topic ID (optional)
+    ),
+);
+```
 
-1. Добавьте бота в нужную группу
-2. Напишите любое сообщение в группу
-3. Выполните запрос: `https://api.telegram.org/bot<TOKEN>/getUpdates`
-4. Найдите `chat.id` в ответе (для групп он отрицательный, например `-1001234567890`)
+### Parameters
 
-## Требования
+| Parameter   | Type   | Required | Description                          |
+| ----------- | ------ | -------- | ------------------------------------ |
+| `bot_token` | string | yes      | Telegram bot token from BotFather    |
+| `chat_id`   | string | yes      | Chat or group ID to send messages to |
+| `topic_id`  | int    | no       | Telegram Group topic ID              |
+
+## How to get chat_id
+
+1. Add the bot to your group
+2. Write any message in the group
+3. Request: `https://api.telegram.org/bot<TOKEN>/getUpdates`
+4. Find `chat.id` in the response (for groups it is negative, e.g. `-1001234567890`)
+
+## Requirements
 
 - PHP ^8.1
 - Flarum ^2.0
 
-## Автор
+## Author
 
 **stezkoy**
 
-## Лицензия
+## License
 
-MIT
+GPL v3

@@ -1,13 +1,10 @@
 stezkoy-noui-tele-notify:
   forum:
     new_discussion: |
-      🆕 <b>Новая тема</b>
+      🆕 Новая тема: «{title}»
 
-      «{title}»
-
-      👤 Автор: {author}
-      📅 Дата: {date}
-      {excerpt}
+      {tags}
+      Отрывок: <i>{excerpt}</i>
       ➡️ <a href="{url}">Перейти к теме</a>
 
     new_post: |
