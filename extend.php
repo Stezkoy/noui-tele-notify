@@ -11,8 +11,8 @@ return [
     new Extend\ServiceProvider(TelegramServiceProvider::class),
 
     (new Extend\Event())
-        ->listen(Started::class, [NewDiscussionListener::class, 'handle'])
-        ->listen(Posted::class, [NewPostListener::class, 'handle']),
+        ->listen(Started::class, NewDiscussionListener::class)
+        ->listen(Posted::class, NewPostListener::class),
 
     (new Extend\LanguagePack())
         ->locale('en', __DIR__ . '/locale/en.yml')
