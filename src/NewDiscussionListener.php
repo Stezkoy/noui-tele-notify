@@ -36,10 +36,27 @@ class NewDiscussionListener
             $excerpt .= '…';
         }
 
+        $tagsString = '';
+        if (method_exists($discussion, 'tags')) {
+            try {
+                $tags = $discussion->tags;
+                if ($tags !== null && $tags->isNotEmpty()) {
+                    $tagNames = [];
+                    foreach ($tags as $tag) {
+                        $tagNames[] = '#' . $tag->name;
+                    }
+                    $tagsString = implode(' ', $tagNames);
+                }
+            } catch (\Throwable $e) {
+                // tags extension not available
+            }
+        }
+
         $discussionUrl = $this->url->to('forum')->route('discussion', ['id' => $discussion->id]);
 
         $message = $this->translator->trans('stezkoy-noui-tele-notify.forum.new_discussion', [
             '{title}' => $this->escape($title),
+            '{tags}' => $this->escape($tagsString),
             '{author}' => $this->escape($authorName),
             '{date}' => $date,
             '{excerpt}' => '<i>' . $this->escape($excerpt) . '</i>',
