@@ -1,0 +1,24 @@
+stezkoy-noui-tele-notify:
+  forum:
+    new_discussion: |
+      🆕 <b>New discussion</b>
+
+      «{title}»
+
+      👤 Author: {author}
+      📅 Date: {date}
+
+      {excerpt}
+
+      ➡️ <a href="{url}">Go to discussion</a>
+
+    new_post: |
+      💬 <b>New post</b>
+
+      Topic: «{title}»
+      👤 Author: {author}
+      📅 Date: {date}
+
+      {excerpt}
+
+      ➡️ <a href="{url}">Go to post</a>
