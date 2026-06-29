@@ -14,7 +14,5 @@ return [
         ->listen(Started::class, NewDiscussionListener::class)
         ->listen(Posted::class, NewPostListener::class),
 
-    (new Extend\LanguagePack())
-        ->locale('en', __DIR__ . '/locale/en.yml')
-        ->locale('ru', __DIR__ . '/locale/ru.yml'),
+    new Extend\Locales(__DIR__ . '/locale'),
 ];
