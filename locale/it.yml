@@ -7,7 +7,7 @@ stezkoy-noui-tele-notify:
       Autore: {author}
       Data: {date}
       {excerpt}
-
+      
       ➡️ <a href="{url}">Vai all'argomento</a>
 
     new_post: |

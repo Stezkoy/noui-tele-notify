@@ -7,7 +7,7 @@ stezkoy-noui-tele-notify:
       Автор: {author}
       Дата: {date}
       {excerpt}
-
+      
       ➡️ <a href="{url}">Перейти к теме</a>
 
     new_post: |

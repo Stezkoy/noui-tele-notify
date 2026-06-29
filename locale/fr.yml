@@ -7,7 +7,7 @@ stezkoy-noui-tele-notify:
       Auteur: {author}
       Date: {date}
       {excerpt}
-
+      
       ➡️ <a href="{url}">Voir le sujet</a>
 
     new_post: |
@@ -16,5 +16,5 @@ stezkoy-noui-tele-notify:
       Auteur: {author}
       Date: {date}
       {excerpt}
-
+      
       ➡️ <a href="{url}">Voir le message</a>

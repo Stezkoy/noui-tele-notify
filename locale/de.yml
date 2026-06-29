@@ -16,5 +16,5 @@ stezkoy-noui-tele-notify:
       Autor: {author}
       Datum: {date}
       {excerpt}
-
+      
       ➡️ <a href="{url}">Zum Beitrag</a>

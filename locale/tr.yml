@@ -7,7 +7,7 @@ stezkoy-noui-tele-notify:
       Yazar: {author}
       Tarih: {date}
       {excerpt}
-
+      
       ➡️ <a href="{url}">Konuya git</a>
 
     new_post: |
