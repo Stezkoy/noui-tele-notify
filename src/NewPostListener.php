@@ -23,6 +23,10 @@ class NewPostListener
             return;
         }
 
+        if ($post->number === 1) {
+            return;
+        }
+
         $title = $discussion->title;
 
         $user = $post->user;
@@ -46,7 +50,7 @@ class NewPostListener
             '{title}' => $this->escape($title),
             '{author}' => $this->escape($authorName),
             '{date}' => $date,
-            '{excerpt}' => $this->escape($excerpt),
+            '{excerpt}' => '<i>' . $this->escape($excerpt) . '</i>',
             '{url}' => $discussionUrl,
         ]);
 

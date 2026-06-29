@@ -42,7 +42,7 @@ class NewDiscussionListener
             '{title}' => $this->escape($title),
             '{author}' => $this->escape($authorName),
             '{date}' => $date,
-            '{excerpt}' => $this->escape($excerpt),
+            '{excerpt}' => '<i>' . $this->escape($excerpt) . '</i>',
             '{url}' => $discussionUrl,
         ]);
 
