@@ -7,6 +7,7 @@ stezkoy-noui-tele-notify:
       作者：{author}
       日期：{date}
       {excerpt}
+      
       ➡️ <a href="{url}">查看主题</a>
 
     new_post: |
@@ -15,4 +16,5 @@ stezkoy-noui-tele-notify:
       作者：{author}
       日期：{date}
       {excerpt}
+
       ➡️ <a href="{url}">查看帖子</a>

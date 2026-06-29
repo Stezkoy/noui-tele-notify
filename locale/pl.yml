@@ -7,6 +7,7 @@ stezkoy-noui-tele-notify:
       Autor: {author}
       Data: {date}
       {excerpt}
+
       ➡️ <a href="{url}">Przejdź do tematu</a>
 
     new_post: |
@@ -15,4 +16,5 @@ stezkoy-noui-tele-notify:
       Autor: {author}
       Data: {date}
       {excerpt}
+      
       ➡️ <a href="{url}">Przejdź do odpowiedzi</a>

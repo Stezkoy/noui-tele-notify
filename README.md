@@ -1,85 +1,49 @@
 # NOUI Telegram Notify
 
-A Flarum v2 extension that sends notifications about new discussions and new posts to a Telegram channel or group. All configuration is done via `config.php` — no admin panel needed.
+[Русская версия](README_RU.md)
+
+A Flarum v2 extension that sends notifications about new discussions and new posts to a Telegram channel or group. Configured via `config.php` — no admin panel needed.
 
 ## Features
 
-- Notification on new discussion — title, author, date, excerpt (200 chars), link
-- Notification on new post in an existing discussion — thread title, author, date, excerpt (200 chars), link
+- Notifications for new discussions and new posts with title, author, date, excerpt, and link
 - Support for Telegram Group topics (optional `topic_id`)
-- Multilingual interface
+- Multilingual: English, Russian, German, French, Turkish, Italian, Chinese, Polish
 - HTML formatting with emoji
 
 ## Installation
 
-Install the extension via Composer:
-
 ```bash
 composer require stezkoy/noui-tele-notify
-```
-
-Then run Flarum migrations:
-
-```bash
-php flarum migrate
 php flarum cache:clear
 ```
 
 ## Configuration
 
-The extension has no admin panel settings. Configure it in your forum's `config.php` under the `stezkoy-noui-tele-notify` key:
-
-### Minimal configuration
+Add to your forum's `config.php` under the `stezkoy-noui-tele-notify` key:
 
 ```php
-<?php return array(
-    // ... other Flarum settings
-
-    'stezkoy-noui-tele-notify' => array(
-        'bot_token' => '1234567890:AAF1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9Kk0Ll',
-        'chat_id' => '-1001234567890',
-    ),
-);
+'stezkoy-noui-tele-notify' => array(
+    'bot_token' => '1234567890:AAF1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9Kk0Ll',
+    'chat_id' => '-1001234567890',
+    'topic_id' => 123,  // optional
+),
 ```
 
-### Full configuration (with Telegram Group topic)
-
-```php
-<?php return array(
-    // ... other Flarum settings
-
-    'stezkoy-noui-tele-notify' => array(
-        'bot_token' => '1234567890:AAF1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9Kk0Ll',
-        'chat_id' => '-1001234567890',
-        'topic_id' => 123,  // Group topic ID (optional)
-    ),
-);
-```
-
-### Parameters
-
-| Parameter   | Type   | Required | Description                          |
-| ----------- | ------ | -------- | ------------------------------------ |
-| `bot_token` | string | yes      | Telegram bot token from BotFather    |
-| `chat_id`   | string | yes      | Chat or group ID to send messages to |
-| `topic_id`  | int    | no       | Telegram Group topic ID              |
-
-## How to get chat_id
-
-1. Add the bot to your group
-2. Write any message in the group
-3. Request: `https://api.telegram.org/bot<TOKEN>/getUpdates`
-4. Find `chat.id` in the response (for groups it is negative, e.g. `-1001234567890`)
+| Parameter   | Required | Description                       |
+| ----------- | -------- | --------------------------------- |
+| `bot_token` | yes      | Telegram bot token from BotFather |
+| `chat_id`   | yes      | Chat or group ID                  |
+| `topic_id`  | no       | Telegram Group topic ID           |
 
 ## Requirements
 
-- PHP ^8.1
-- Flarum ^2.0
+PHP ^8.1, Flarum ^2.0
 
 ## Author
 
-**stezkoy**
+**Stezkoy**
 
 ## License
 
-GPL v3
+GPL-3.0

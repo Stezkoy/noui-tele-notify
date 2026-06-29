@@ -1,18 +1,20 @@
 stezkoy-noui-tele-notify:
   forum:
     new_discussion: |
-      🆕 <b>Nouveau sujet :</b> «{title}»
+      🆕 <b>Nouveau sujet:</b> «{title}»
 
-      Tags : {tags}
-      Auteur : {author}
-      Date : {date}
+      Tags: {tags}
+      Auteur: {author}
+      Date: {date}
       {excerpt}
+
       ➡️ <a href="{url}">Voir le sujet</a>
 
     new_post: |
-      💬 <b>Nouveau message dans le sujet :</b> «{title}»
+      💬 <b>Nouveau message dans le sujet:</b> «{title}»
 
-      Auteur : {author}
-      Date : {date}
+      Auteur: {author}
+      Date: {date}
       {excerpt}
+
       ➡️ <a href="{url}">Voir le message</a>
