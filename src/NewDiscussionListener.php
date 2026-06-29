@@ -21,10 +21,10 @@ class NewDiscussionListener
 
         $title = $discussion->title;
 
-        $user = $post?->user;
+        $user = $discussion->user;
         $authorName = $user?->display_name ?? 'Unknown';
 
-        $createdAt = $post?->created_at;
+        $createdAt = $discussion->created_at;
         $date = $createdAt ? $createdAt->format('d.m.Y H:i') : '—';
 
         $content = '';
