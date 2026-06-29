@@ -7,7 +7,7 @@ A Flarum v2 extension that sends notifications about new discussions and new pos
 - Notification on new discussion — title, author, date, excerpt (200 chars), link
 - Notification on new post in an existing discussion — thread title, author, date, excerpt (200 chars), link
 - Support for Telegram Group topics (optional `topic_id`)
-- Bilingual interface: Russian and English
+- Multilingual interface
 - HTML formatting with emoji
 
 ## Installation
