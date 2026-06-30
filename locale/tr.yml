@@ -2,19 +2,15 @@ stezkoy-noui-tele-notify:
   forum:
     new_discussion: |
       🆕 <b>Yeni konu:</b> «{title}»
-
       Etiketler: {tags}
       Yazar: {author}
       Tarih: {date}
       {excerpt}
-      
       ➡️ <a href="{url}">Konuya git</a>
 
     new_post: |
       💬 <b>Konuda yeni mesaj:</b> «{title}»
-
       Yazar: {author}
       Tarih: {date}
       {excerpt}
-      
       ➡️ <a href="{url}">Mesaja git</a>

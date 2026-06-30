@@ -2,19 +2,15 @@ stezkoy-noui-tele-notify:
   forum:
     new_discussion: |
       🆕 <b>Nuovo argomento:</b> «{title}»
-
       Tag: {tags}
       Autore: {author}
       Data: {date}
       {excerpt}
-      
       ➡️ <a href="{url}">Vai all'argomento</a>
 
     new_post: |
       💬 <b>Nuovo messaggio nell'argomento:</b> «{title}»
-
       Autore: {author}
       Data: {date}
       {excerpt}
-      
       ➡️ <a href="{url}">Vai al messaggio</a>
