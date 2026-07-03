@@ -1,7 +1,7 @@
 stezkoy-noui-tele-notify:
   forum:
     new_discussion: |
-      🆕 <b>新主题：</b> «{title}»
+      🆕 <b>新主题：</b>«{title}»
       <b>标签：</b>{tags}
       <b>作者：</b>{author}
       <b>日期：</b>{date}
