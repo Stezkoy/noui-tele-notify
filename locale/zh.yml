@@ -9,7 +9,7 @@ stezkoy-noui-tele-notify:
       ➡️ <a href="{url}">查看主题</a>
 
     new_post: |
-      💬 <b>主题中的新帖子：</b> «{title}»
+      💬 <b>主题中的新帖子：</b>«{title}»
       <b>作者：</b>{author}
       <b>日期：</b>{date}
       {excerpt}
