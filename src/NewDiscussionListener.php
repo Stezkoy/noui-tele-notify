@@ -27,7 +27,7 @@ class NewDiscussionListener
         $createdAt = $discussion->created_at;
         if ($createdAt) {
             $tz = new \DateTimeZone(date_default_timezone_get());
-            $createdAt->setTimezone($tz);
+            $createdAt = $createdAt->setTimezone($tz);
             $date = $createdAt->format('d.m.Y H:i');
             $dateZone = $createdAt->format('T') ?: date_default_timezone_get();
         } else {
