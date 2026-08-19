@@ -26,10 +26,11 @@ class NewDiscussionListener
 
         $createdAt = $discussion->created_at;
         if ($createdAt) {
-            $tz = new \DateTimeZone(date_default_timezone_get());
+            $tzName = date_default_timezone_get() ?: 'UTC';
+            $tz = new \DateTimeZone($tzName);
             $createdAt = $createdAt->setTimezone($tz);
             $date = $createdAt->format('d.m.Y H:i');
-            $dateZone = $createdAt->format('T') ?: date_default_timezone_get();
+            $dateZone = $createdAt->format('T') ?: $tzName;
         } else {
             $date = '—';
             $dateZone = '';
