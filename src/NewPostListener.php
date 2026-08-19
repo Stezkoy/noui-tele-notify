@@ -36,9 +36,9 @@ class NewPostListener
         if ($createdAt) {
             $tzName = date_default_timezone_get() ?: 'UTC';
             $tz = new \DateTimeZone($tzName);
-            $createdAt = $createdAt->setTimezone($tz);
-            $date = $createdAt->format('d.m.Y H:i');
-            $dateZone = $createdAt->format('T') ?: $tzName;
+            $dateTime = (new \DateTimeImmutable('@' . $createdAt->getTimestamp()))->setTimezone($tz);
+            $date = $dateTime->format('d.m.Y H:i');
+            $dateZone = $dateTime->format('T') ?: $tzName;
         } else {
             $date = '—';
             $dateZone = '';
