@@ -38,7 +38,7 @@ Add to your forum's `config.php` under the `stezkoy-noui-tele-notify` key:
 
 ## Requirements
 
-PHP ^8.1, Flarum ^2.0
+PHP ^8.3, Flarum ^2.0
 
 ## Author
 
@@ -46,4 +46,4 @@ PHP ^8.1, Flarum ^2.0
 
 ## License
 
-GPL-3.0
+MIT

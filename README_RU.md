@@ -38,7 +38,7 @@ php flarum cache:clear
 
 ## Требования
 
-PHP ^8.1, Flarum ^2.0
+PHP ^8.3, Flarum ^2.0
 
 ## Автор
 
@@ -46,4 +46,4 @@ PHP ^8.1, Flarum ^2.0
 
 ## Лицензия
 
-GPL-3.0
+MIT
