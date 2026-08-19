@@ -4,13 +4,13 @@ stezkoy-noui-tele-notify:
       🆕 <b>Yeni konu:</b> «{title}»
       <b>Etiketler:</b> {tags}
       <b>Yazar:</b> {author}
-      <b>Tarih:</b> {date}
+      <b>Tarih:</b> {date} ({date_zone})
       {excerpt}
       ➡️ <a href="{url}">Konuya git</a>
 
     new_post: |
       💬 <b>Konuda yeni mesaj:</b> «{title}»
       <b>Yazar:</b> {author}
-      <b>Tarih:</b> {date}
+      <b>Tarih:</b> {date} ({date_zone})
       {excerpt}
       ➡️ <a href="{url}">Mesaja git</a>

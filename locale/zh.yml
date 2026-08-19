@@ -4,13 +4,13 @@ stezkoy-noui-tele-notify:
       🆕 <b>新主题：</b>«{title}»
       <b>标签：</b>{tags}
       <b>作者：</b>{author}
-      <b>日期：</b>{date}
+      <b>日期：</b>{date} ({date_zone})
       {excerpt}
       ➡️ <a href="{url}">查看主题</a>
 
     new_post: |
       💬 <b>主题中的新帖子：</b>«{title}»
       <b>作者：</b>{author}
-      <b>日期：</b>{date}
+      <b>日期：</b>{date} ({date_zone})
       {excerpt}
       ➡️ <a href="{url}">查看帖子</a>

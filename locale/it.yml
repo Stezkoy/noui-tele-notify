@@ -4,13 +4,13 @@ stezkoy-noui-tele-notify:
       🆕 <b>Nuovo argomento:</b> «{title}»
       <b>Tag:</b> {tags}
       <b>Autore:</b> {author}
-      <b>Data:</b> {date}
+      <b>Data:</b> {date} ({date_zone})
       {excerpt}
       ➡️ <a href="{url}">Vai all'argomento</a>
 
     new_post: |
       💬 <b>Nuovo messaggio nell'argomento:</b> «{title}»
       <b>Autore:</b> {author}
-      <b>Data:</b> {date}
+      <b>Data:</b> {date} ({date_zone})
       {excerpt}
       ➡️ <a href="{url}">Vai al messaggio</a>

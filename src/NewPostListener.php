@@ -33,7 +33,15 @@ class NewPostListener
         $authorName = $user?->display_name ?? 'Unknown';
 
         $createdAt = $post->created_at;
-        $date = $createdAt ? $createdAt->format('d.m.Y H:i') : '—';
+        if ($createdAt) {
+            $tz = new \DateTimeZone(date_default_timezone_get());
+            $createdAt->setTimezone($tz);
+            $date = $createdAt->format('d.m.Y H:i');
+            $dateZone = $createdAt->format('T') ?: date_default_timezone_get();
+        } else {
+            $date = '—';
+            $dateZone = '';
+        }
 
         $content = '';
         if (!empty($post->content)) {
@@ -50,6 +58,7 @@ class NewPostListener
             '{title}' => $this->escape($title),
             '{author}' => $this->escape($authorName),
             '{date}' => $date,
+            '{date_zone}' => $this->escape($dateZone),
             '{excerpt}' => '<i>' . $this->escape($excerpt) . '</i>',
             '{url}' => $discussionUrl,
         ]);

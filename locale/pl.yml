@@ -4,13 +4,13 @@ stezkoy-noui-tele-notify:
       🆕 <b>Nowy temat:</b> «{title}»
       <b>Tagi:</b> {tags}
       <b>Autor:</b> {author}
-      <b>Data:</b> {date}
+      <b>Data:</b> {date} ({date_zone})
       {excerpt}
       ➡️ <a href="{url}">Przejdź do tematu</a>
 
     new_post: |
       💬 <b>Nowa odpowiedź w temacie:</b> «{title}»
       <b>Autor:</b> {author}
-      <b>Data:</b> {date}
+      <b>Data:</b> {date} ({date_zone})
       {excerpt}
       ➡️ <a href="{url}">Przejdź do odpowiedzi</a>
