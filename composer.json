@@ -2,7 +2,7 @@
   "name": "stezkoy/noui-tele-notify",
   "type": "flarum-extension",
   "description": "Send Telegram notifications about new discussions and posts from Flarum",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "license": "GPL-3.0",
   "authors": [
     {
