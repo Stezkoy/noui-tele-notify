@@ -34,7 +34,7 @@ class NewPostListener
 
         $createdAt = $post->created_at;
         if ($createdAt) {
-            $tzName = date_default_timezone_get() ?: 'UTC';
+            $tzName = ini_get('date.timezone') ?: date_default_timezone_get() ?: 'UTC';
             $tz = new \DateTimeZone($tzName);
             $dateTime = (new \DateTimeImmutable('@' . $createdAt->getTimestamp()))->setTimezone($tz);
             $date = $dateTime->format('d.m.Y H:i');
