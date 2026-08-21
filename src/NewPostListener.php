@@ -32,18 +32,6 @@ class NewPostListener
         $user = $post->user;
         $authorName = $user?->display_name ?? 'Unknown';
 
-        $createdAt = $post->created_at;
-        if ($createdAt) {
-            $tzName = ini_get('date.timezone') ?: date_default_timezone_get() ?: 'UTC';
-            $tz = new \DateTimeZone($tzName);
-            $dateTime = (new \DateTimeImmutable('@' . $createdAt->getTimestamp()))->setTimezone($tz);
-            $date = $dateTime->format('d.m.Y H:i');
-            $dateZone = $dateTime->format('T') ?: $tzName;
-        } else {
-            $date = '—';
-            $dateZone = '';
-        }
-
         $content = '';
         if (!empty($post->content)) {
             $content = strip_tags((string) $post->content);
@@ -58,8 +46,6 @@ class NewPostListener
         $message = $this->translator->trans('stezkoy-noui-tele-notify.forum.new_post', [
             '{title}' => $this->escape($title),
             '{author}' => $this->escape($authorName),
-            '{date}' => $date,
-            '{date_zone}' => $this->escape($dateZone),
             '{excerpt}' => '<i>' . $this->escape($excerpt) . '</i>',
             '{url}' => $discussionUrl,
         ]);

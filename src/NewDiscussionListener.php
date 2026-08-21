@@ -24,18 +24,6 @@ class NewDiscussionListener
         $user = $discussion->user;
         $authorName = $user?->display_name ?? 'Unknown';
 
-        $createdAt = $discussion->created_at;
-        if ($createdAt) {
-            $tzName = ini_get('date.timezone') ?: date_default_timezone_get() ?: 'UTC';
-            $tz = new \DateTimeZone($tzName);
-            $dateTime = (new \DateTimeImmutable('@' . $createdAt->getTimestamp()))->setTimezone($tz);
-            $date = $dateTime->format('d.m.Y H:i');
-            $dateZone = $dateTime->format('T') ?: $tzName;
-        } else {
-            $date = '—';
-            $dateZone = '';
-        }
-
         $content = '';
         $sourcePost = $post;
         if ($sourcePost === null || empty($sourcePost->content)) {
@@ -76,8 +64,6 @@ class NewDiscussionListener
             '{title}' => $this->escape($title),
             '{tags}' => $this->escape($tagsString),
             '{author}' => $this->escape($authorName),
-            '{date}' => $date,
-            '{date_zone}' => $this->escape($dateZone),
             '{excerpt}' => '<i>' . $this->escape($excerpt) . '</i>',
             '{url}' => $discussionUrl,
         ]);

@@ -1,16 +1,14 @@
 stezkoy-noui-tele-notify:
   forum:
     new_discussion: |
-      🆕 <b>Neues Thema:</b> «{title}»
+      🆕 <b>Neues Thema:</b> <a href="{url}">«{title}»</a>
       <b>Tags:</b> {tags}
       <b>Autor:</b> {author}
-      <b>Datum:</b> {date} ({date_zone})
       {excerpt}
       ➡️ <a href="{url}">Zum Thema</a>
 
     new_post: |
-      💬 <b>Neuer Beitrag im Thema:</b> «{title}»
+      💬 <b>Neuer Beitrag im Thema:</b> <a href="{url}">«{title}»</a>
       <b>Autor:</b> {author}
-      <b>Datum:</b> {date} ({date_zone})
       {excerpt}
       ➡️ <a href="{url}">Zum Beitrag</a>
